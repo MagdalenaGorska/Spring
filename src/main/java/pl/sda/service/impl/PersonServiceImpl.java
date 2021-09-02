@@ -3,10 +3,12 @@ package pl.sda.service.impl;
 import pl.sda.dao.PersonDao;
 import pl.sda.model.Person;
 import pl.sda.service.PersonService;
+import pl.sda.validator.PersonValidator;
 
 public class PersonServiceImpl implements PersonService {
 
     private final PersonDao personDao;
+    private PersonValidator validator;
 
     public PersonServiceImpl(PersonDao personDao) {
         this.personDao = personDao;
@@ -14,7 +16,9 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void add(Person person) {
-        personDao.add(person);
+        if (validator.isValid(person)) {
+            personDao.add(person);
+        }
     }
 
     @Override
@@ -22,4 +26,7 @@ public class PersonServiceImpl implements PersonService {
         return personDao.getById(id);
     }
 
+    public void setValidator(PersonValidator validator) {
+        this.validator = validator;
+    }
 }
