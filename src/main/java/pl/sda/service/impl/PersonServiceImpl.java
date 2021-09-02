@@ -14,12 +14,12 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public void add(Person person) {
-
+        personDao.add(person);
     }
 
     @Override
     public Person getById(Integer id) {
-        return null;
+        return personDao.getById(id);
     }
 
 }

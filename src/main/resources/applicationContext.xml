@@ -7,5 +7,9 @@
     http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
     <bean id ="helloWorld" class="pl.sda.model.HelloWorld" />
+    <bean id="personDaoMemory" class="pl.sda.dao.impl.PersonDaoMemoryImpl"/>
+    <bean id="personService" class="pl.sda.service.impl.PersonServiceImpl">
+        <constructor-arg index="0" ref="personDaoMemory"/>
+    </bean>
 
 </beans>

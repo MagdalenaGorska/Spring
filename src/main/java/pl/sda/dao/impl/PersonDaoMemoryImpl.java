@@ -18,10 +18,9 @@ public class PersonDaoMemoryImpl implements PersonDao {
     @Override
     public Person getById(Integer id) {
         //lepsze bo nie użwamy pętli, zapamiętaj!
-        personList.stream()
+        return personList.stream()
                 .filter(person -> person.getId().equals(id))
                 .findFirst() //co najwyżej jeden obiekt
                 .orElseThrow(); //rzuci wyjątek, jak go nie znajdzie
-        return null;
     }
 }
